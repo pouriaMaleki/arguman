@@ -72,5 +72,14 @@ define ['scroll'], (Scroll) ->
 
 				return
 
+			@el.addEventListener 'click', (e) =>
+
+				@transTo e.layerX
+
+				return
+
 			return
 
+		transTo: (x) ->
+
+			@scroll.transTo x, 300
