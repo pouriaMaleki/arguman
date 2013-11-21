@@ -1,10 +1,8 @@
 *.bat
 .htaccess
 
-scripts/js/**
 xeno/**
 node_modules
-scripts/dist/**
 
 -p
 

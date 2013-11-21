@@ -1,1 +1,0 @@
-coffee ./compile.coffee

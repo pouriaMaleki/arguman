@@ -1,27 +1,31 @@
-define ['is-number'], (isNumber) ->
+isNumber = require './isNumber'
 
-	class Googool
+module.exports = class Googool
 
-		constructor: (@parentNode, @name, @value) ->
+	constructor: (@parentNode, @name, @value) ->
 
-			do @_init
+		if localStorage.getItem(@name) isnt null
 
-			do @specInit
+			@value = localStorage.getItem @name
 
-			do @setEvents
+		do @_init
 
-		_init: ->
+		do @specInit
 
-			@el = document.createElement 'div'
+		do @setEvents
 
-			@el.classList.add 'googool'
+	_init: ->
 
-			@el.title = @name
+		@el = document.createElement 'div'
 
-			@parentNode.appendChild @el
+		@el.classList.add 'googool'
 
-			return
+		@el.title = @name
 
-		specInit: ->
+		@parentNode.appendChild @el
 
-		setEvents: ->
+		return
+
+	specInit: ->
+
+	setEvents: ->

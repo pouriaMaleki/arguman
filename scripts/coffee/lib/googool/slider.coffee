@@ -1,25 +1,29 @@
-define ['../googool', '../is-number', '../slider-element'], (Googool, isNumber, SliderEl) ->
+Googool = require '../Googool'
+isNumber = require '../isNumber'
+SliderEl = require './slider/SliderElement'
 
-	class Slider extends Googool
+module.exports = class Slider extends Googool
 
-		constructor: (@parentNode, @name, @value, @start, @end, @fix) ->
+	constructor: (@parentNode, @name, @value, @start, @end, @fix) ->
 
-			super
+		super
 
-		specInit: ->
+	specInit: ->
 
-			@el.classList.add 'slide'
+		@el.classList.add 'slide'
 
-			@parentNode.appendChild @el
+		@parentNode.appendChild @el
 
-			@sliderEl = new SliderEl @el, @start, @end, @value, @fix
+		@sliderEl = new SliderEl @el, @start, @end, @value, @fix
+
+		return
+
+	setEvents: ->
+
+		@sliderEl.on 'change', (@value) =>
+
+			localStorage.setItem @name, @value
 
 			return
 
-		setEvents: ->
-
-			@sliderEl.on 'change', (@value) =>
-
-				return
-
-			return
+		return

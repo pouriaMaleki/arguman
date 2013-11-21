@@ -1,61 +1,64 @@
-define ['../googool', '../is-number'], (Googool, isNumber) ->
+Googool = require '../Googool'
+isNumber = require '../isNumber'
 
-	class Simple extends Googool
+module.exports = class Simple extends Googool
 
-		constructor: (@parentNode, @name, @value, @strict) ->
+	constructor: (@parentNode, @name, @value, @strict) ->
 
-			super
+		super
 
-		specInit: ->
+	specInit: ->
 
-			@el.classList.add 'simple'
+		@el.classList.add 'simple'
 
-			@input = document.createElement 'input'
+		@input = document.createElement 'input'
 
-			@input.type = 'text'
+		@input.type = 'text'
 
-			@input.value = @value
+		@input.value = @value
 
-			@el.appendChild @input
+		@el.appendChild @input
 
-			return
+		return
 
-		setEvents: ->
+	setEvents: ->
+
+		if @strict
+
+			if isNumber @input.value
+
+				@strictType = 'number'
+
+			else
+
+				@strictType = 'string'
+
+		@input.addEventListener 'keyup', (e) =>
 
 			if @strict
 
-				if isNumber @input.value
+				if @strictType is 'number'
 
-					@strictType = 'number'
+					if num = isNumber @input.value
 
-				else
+						@value = num
 
-					@strictType = 'string'
+					else
 
-			@input.addEventListener 'keyup', (e) =>
+						@input.value = @value
 
-				if @strict
+				else if @strictType is 'string'
 
-					if @strictType is 'number'
-
-						if num = isNumber @input.value
-
-							@value = num
-
-						else
-
-							@input.value = @value
-
-					else if @strictType is 'string'
-
-						@value = @input.value
-
-					return
-
-				@value = isNumber @input.value
-
-				@value = @input.value if @value is false
+					@value = @input.value
 
 				return
 
+			@value = isNumber @input.value
+
+			@value = @input.value if @value is false
+
+			localStorage.setItem @name, @value
+
 			return
+
+		return
