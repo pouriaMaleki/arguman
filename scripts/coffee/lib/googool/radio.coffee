@@ -54,6 +54,6 @@ module.exports = class Radio extends Googool
 
 					@value = @values[@selected]
 
-					localStorage.setItem @name, @value
+					localStorage.setItem (document.URL + @name), @value
 
 		return

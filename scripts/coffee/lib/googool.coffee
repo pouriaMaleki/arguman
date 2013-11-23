@@ -4,9 +4,12 @@ module.exports = class Googool
 
 	constructor: (@parentNode, @name, @value) ->
 
-		if localStorage.getItem(@name) isnt null
+		#development:
+		# localStorage.removeItem document.URL + @name
 
-			@value = localStorage.getItem @name
+		if localStorage.getItem(document.URL + @name) isnt null
+
+			@value = localStorage.getItem (document.URL + @name)
 
 		do @_init
 

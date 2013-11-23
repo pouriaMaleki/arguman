@@ -22,7 +22,7 @@ module.exports = class Slider extends Googool
 
 		@sliderEl.on 'change', (@value) =>
 
-			localStorage.setItem @name, @value
+			localStorage.setItem (document.URL + @name), @value
 
 			return
 

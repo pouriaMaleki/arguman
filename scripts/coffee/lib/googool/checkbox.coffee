@@ -28,7 +28,7 @@ module.exports = class Checkbox extends Googool
 
 			@value = !@value
 
-			localStorage.setItem @name, @value
+			localStorage.setItem (document.URL + @name), @value
 
 			if @value
 

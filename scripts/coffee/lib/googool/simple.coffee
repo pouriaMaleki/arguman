@@ -1,5 +1,6 @@
 Googool = require '../Googool'
 isNumber = require '../isNumber'
+SimpleEl = require './simple/SimpleElement'
 
 module.exports = class Simple extends Googool
 
@@ -11,53 +12,17 @@ module.exports = class Simple extends Googool
 
 		@el.classList.add 'simple'
 
-		@input = document.createElement 'input'
-
-		@input.type = 'text'
-
-		@input.value = @value
-
-		@el.appendChild @input
+		@input = new SimpleEl @el, @value
 
 		return
 
 	setEvents: ->
 
-		if @strict
-
-			if isNumber @input.value
-
-				@strictType = 'number'
-
-			else
-
-				@strictType = 'string'
-
-		@input.addEventListener 'keyup', (e) =>
-
-			if @strict
-
-				if @strictType is 'number'
-
-					if num = isNumber @input.value
-
-						@value = num
-
-					else
-
-						@input.value = @value
-
-				else if @strictType is 'string'
-
-					@value = @input.value
-
-				return
+		@input.on 'change', (@value) =>
 
 			@value = isNumber @input.value
 
-			@value = @input.value if @value is false
-
-			localStorage.setItem @name, @value
+			localStorage.setItem (document.URL + @name), @value
 
 			return
 
