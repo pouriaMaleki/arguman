@@ -10,7 +10,9 @@ module.exports = class Checkbox extends Googool
 
 		@el.classList.add 'check'
 
-		if @value
+		console.log @value
+
+		if @value is 'true' or @value is true
 
 			@el.classList.add 'checked'
 
@@ -27,6 +29,8 @@ module.exports = class Checkbox extends Googool
 		@el.addEventListener 'click', (e) =>
 
 			@value = !@value
+
+			console.log (document.URL + @name), @value
 
 			localStorage.setItem (document.URL + @name), @value
 

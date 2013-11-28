@@ -1,0 +1,11 @@
+module.exports = ->
+
+	style = document.createElement("style")
+	style.innerHTML = '.variabol {position: fixed;font-family: "HelveticaNeueLT";left: 0;right: 0;top: 0;min-height: 50px;padding-bottom: 9px;background: #131212;}.variabol .googool {margin-left: 10px;margin-top: 9px;height: 40px;display: inline-block;}.variabol .simple {vertical-align: top;}.variabol .simple input {border: none;font-size: 13px;outline: none;background: transparent;border-bottom: 1px solid #515151;color: #c7c4c4;width: 50px;height: 30px;line-height: 40px;position: relative;top: 1px;padding-left: 2px;}.variabol .simple input:hover, .variabol .simple input:focus {border-bottom-color: #6b6b6b;color: white;}.variabol .check {background-color: #666666;float: left;color: #eeeeee;font-size: 16px;text-align: center;vertical-align: middle;line-height: 40px;padding: 0 12px;-webkit-user-select: none;cursor: default;}.variabol .check:hover {background-color: #555555;}.variabol .checked {background-color: #333333 !important;color: white !important;}.variabol .slide {color: #eeeeee;}.variabol .slide .slider {position: relative;top: 20px;width: 160px;height: 6px;background: #555555;}.variabol .slide .slider-handle {position: absolute;width: 30px;height: 20px;top: -3px;}.variabol .slide .slider-handle:before {display: block;content: " ";width: 10px;height: 10px;background: #cccccc;opacity: 1;}.variabol .slide .slider-handle:after {display: block;content: " ";width: 0;height: 0;border-style: solid;border-width: 5px 5px 0 5px;position: absolute;border-color: #cccccc transparent transparent transparent;top: 10px;}.variabol .slide .slider-handle:hover:after {border-color: white transparent transparent transparent;}.variabol .slide .slider-handle:hover:before {background: white;}.variabol .slide .slider-indicator {position: absolute;width: 24px;text-align: center;top: -22px;left: -7px;font-weight: bold;opacity: 0;transition: all 0.2s;}.variabol .slide .slider-handle:hover .slider-indicator {opacity: 1;}.variabol .slide .slider-filled {height: 100%;background: #cccccc;position: absolute;left: 0;}'
+	# fileref.setAttribute("rel", "stylesheet")
+	# fileref.setAttribute("type", "text/css")
+	# fileref.setAttribute("href", "../scripts/main.css")
+
+	document.getElementsByTagName("head")[0].appendChild(style)
+
+	# document.getElementsByTagName("head")[0].ap

@@ -1,7 +1,9 @@
+do require './setCSS'
 Simple = require './googool/Simple'
 Checkbox = require './googool/Checkbox'
 Radio = require './googool/Radio'
 Slider = require './googool/Slider'
+
 
 module.exports = class Arguman
 

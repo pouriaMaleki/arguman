@@ -8,8 +8,6 @@ module.exports = class SliderElement
 
 		do @_createElements
 
-		@rects = @el.getBoundingClientRect()
-
 		do @_setScroller
 
 	on: (job, callback) ->
@@ -46,11 +44,11 @@ module.exports = class SliderElement
 
 	_setScroller: ->
 
-		@scroll = new Scroll @handleEl, 0, @rects.width
+		@scroll = new Scroll @handleEl, 0, 160
 
 		@distance = @end - @start
 
-		@factor = @rects.width / @distance
+		@factor = 160 / @distance
 
 		@scroll.to @factor * @value
 
